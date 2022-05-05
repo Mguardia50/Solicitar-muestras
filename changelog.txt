@@ -1,0 +1,6 @@
+Programa para pedir muestras V0.1:
+
+-Se cambió el código que buscaba por clase y agregaba con DOM casi manualmente por un array que lo simplifico
+-Se cambiaron los 3 productos a 5
+-Ahora aparece listado el producto y el precio
+-No se pueden repetir muestras
