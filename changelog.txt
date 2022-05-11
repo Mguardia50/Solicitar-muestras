@@ -1,3 +1,10 @@
+Programa para pedir muestras V0.15:
+
+-Se elimino código sin uso
+-Se definio "process"
+-Se cambio el onclick de HTML a eventos
+
+
 Programa para pedir muestras V0.1:
 
 -Se cambió el código que buscaba por clase y agregaba con DOM casi manualmente por un array que lo simplifico

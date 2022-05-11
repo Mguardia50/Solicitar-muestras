@@ -3,6 +3,7 @@ let i=0
 const verificador = [];
 const sumatoria = [];
 const pedidoFinal = [];
+let process;
 
 const portfolio = [
     {id: 1, item: "natamicina", precio: 170},
@@ -20,8 +21,40 @@ let tabla = document.getElementsByClassName("tabla");
 tabla[0].innerHTML = "Por favor ingrese las muestras";
 
 
+let btnMuestras = document.getElementsByClassName ("btnMuestras");
+
+
+let btnNata = document.getElementById("btnNata");
+let btnBetaC = document.getElementById("btnBetaC");
+let btnSucra = document.getElementById("btnSucra");
+let btnAceK = document.getElementById("btnAceK");
+let btnO2Ti = document.getElementById("btnO2Ti");
+let btnACitri = document.getElementById("btnACitri");
+
+
+btnNata.addEventListener("click", () => {
+    muestraSolicitada(1);
+})
+btnBetaC.addEventListener("click", () => {
+    muestraSolicitada(2);
+})
+btnSucra.addEventListener("click", () => {
+    muestraSolicitada(3);
+})
+btnAceK.addEventListener("click", () => {
+    muestraSolicitada(4);
+})
+btnO2Ti.addEventListener("click", () => {
+    muestraSolicitada(5);
+})
+btnACitri.addEventListener("click", () => {
+    muestraSolicitada(6);
+})
+
 function muestraSolicitada(iditem){
     
+
+
     verificador.push(iditem);
     verificador.sort(((a,b) => a - b));
 
@@ -45,7 +78,7 @@ function muestraSolicitada(iditem){
             tabla[i].innerHTML = info;
             i = i + 1;
             return i;
-            return verificador;
+            
 }
 
 function continuar(){
