@@ -3,7 +3,7 @@ let i=0
 const verificador = [];
 const sumatoria = [];
 const pedidoFinal = [];
-let process;
+let pedidoFinalconcat = [];
 
 const portfolio = [
     {id: 1, item: "natamicina", precio: 170},
@@ -21,35 +21,21 @@ let tabla = document.getElementsByClassName("tabla");
 tabla[0].innerHTML = "Por favor ingrese las muestras";
 
 
-let btnMuestras = document.getElementsByClassName ("btnMuestras");
+const contenedorMuestras = document.getElementById("contenedorMuestras");
+
+contenedorMuestras.addEventListener('click', muestraSolicitadax);
 
 
-let btnNata = document.getElementById("btnNata");
-let btnBetaC = document.getElementById("btnBetaC");
-let btnSucra = document.getElementById("btnSucra");
-let btnAceK = document.getElementById("btnAceK");
-let btnO2Ti = document.getElementById("btnO2Ti");
-let btnACitri = document.getElementById("btnACitri");
+function muestraSolicitadax(e) {
+        
+        if (e.target.classList.contains("btnMuestras")){
+            let iditem = parseInt(e.target.id); /* le hice parseInt porque estaba como array, también podría haberle cambiado el ID a numero en el HTML? */
+            muestraSolicitada(iditem);
+        }
+    
+}
 
 
-btnNata.addEventListener("click", () => {
-    muestraSolicitada(1);
-})
-btnBetaC.addEventListener("click", () => {
-    muestraSolicitada(2);
-})
-btnSucra.addEventListener("click", () => {
-    muestraSolicitada(3);
-})
-btnAceK.addEventListener("click", () => {
-    muestraSolicitada(4);
-})
-btnO2Ti.addEventListener("click", () => {
-    muestraSolicitada(5);
-})
-btnACitri.addEventListener("click", () => {
-    muestraSolicitada(6);
-})
 
 function muestraSolicitada(iditem){
     
@@ -64,7 +50,7 @@ function muestraSolicitada(iditem){
             if (verificador[verificado]==verificador[verificado-1]){
                 verificador.splice(verificado,1);
                 alert("Ya se pidio dicha muestra, por favor seleccione otra");
-                process.exit();
+                return;
             }
         
     }
@@ -81,8 +67,15 @@ function muestraSolicitada(iditem){
             
 }
 
-function continuar(){
-  
+const btnContinuarPedido = document.getElementById("continuarPedido");
+
+btnContinuarPedido.addEventListener('click', funContinuarPedido);
+
+function funContinuarPedido(){
+
+    pedidoFinal.splice(0, pedidoFinal.length);
+    sumatoria.splice(0,sumatoria.length);
+    pedidoFinalconcat.splice(0, pedidoFinalconcat.length);
 
     if (i<=0){
         alert("seleccione al menos una muestra");
@@ -120,3 +113,30 @@ function continuar(){
 }
     
 
+/*  ---EL SIGUIENTE COMENTARIO ES SOLO PARA DEJAR EN CLARO EL CODIGO QUE AHORRE CON EL CODIGO LINEA 29:
+
+let btnNata = document.getElementById("btnNata");
+let btnBetaC = document.getElementById("btnBetaC");
+let btnSucra = document.getElementById("btnSucra");
+let btnAceK = document.getElementById("btnAceK");
+let btnO2Ti = document.getElementById("btnO2Ti");
+let btnACitri = document.getElementById("btnACitri");
+
+btnNata.addEventListener("click", () => {
+    muestraSolicitada(1);
+}) 
+btnBetaC.addEventListener("click", () => {
+    muestraSolicitada(2);
+})
+btnSucra.addEventListener("click", () => {
+    muestraSolicitada(3);
+})
+btnAceK.addEventListener("click", () => {
+    muestraSolicitada(4);
+})
+btnO2Ti.addEventListener("click", () => {
+    muestraSolicitada(5);
+})
+btnACitri.addEventListener("click", () => {
+    muestraSolicitada(6);
+}) */

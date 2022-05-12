@@ -1,8 +1,12 @@
 Programa para pedir muestras V0.15:
 
 -Se elimino código sin uso
--Se definio "process"
+-Se cambio process.exit() por un return ya que daba error en consola.
 -Se cambio el onclick de HTML a eventos
+-La función continuar paso a ser funContinuarPedido para facilitar lectura de código
+-Si se procedía a clickear cargar el pedido multiples veces, se guardaban los valores, por lo que
+las muestras se pedian repetidamente; ahora se borra el array lo que hace que se pidan 1 sola vez y
+no queden guardadas
 
 
 Programa para pedir muestras V0.1:
