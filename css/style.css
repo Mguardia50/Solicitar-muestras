@@ -1,0 +1,42 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#contenedorMuestras{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.boxMuestra{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+}
+
+p{
+    margin: 7px;
+}
+
+input{
+    margin: 7px;
+}
+
+.ctdadMuestra{
+    font-size: large;
+    width: 70px;
+}
+
+.btnMuestras{
+    font-size: large;
+}

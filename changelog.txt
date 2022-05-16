@@ -1,3 +1,9 @@
+Programa para pedir muestras V0.2:
+-Se ordeno el código en distintos archivos JS
+-Ahora se agregan los items a través de JS y no del HTML
+
+
+
 Programa para pedir muestras V0.15:
 
 -Se elimino código sin uso

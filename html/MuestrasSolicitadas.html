@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="ListadoMuestras">
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+
+        const muestras = [];
+        /* let muestras = localStorage.getItem("1"); */
+
+        for (let i= 0; i< localStorage.length; i++){
+            let clave = localStorage.key(i);
+            let valor = localStorage.getItem(clave);
+
+            const listaMuestras = document.getElementById('ListadoMuestras');
+    
+            listaMuestras.innerHTML = "<h2>Muestras Solicitadas: </h2>";
+
+
+            let li = document.createElement("li");
+
+            li.innerHTML = valor;
+
+            document.body.append(li); 
+
+            let btn = document.createElement("button");
+
+            btn.innerHTML += `<input type="number" id="${clave}" class="ctdadMuestra" placeholder="Cant">`;
+
+            document.body.append(btn); 
+            
+        }
+            
+        
+
+   
+      
+    </script>
+</body>
+</html>
