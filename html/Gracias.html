@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h1 id="temporizador">Volveremos Prontos en 4</h1>
+    </div>
+
+    <img src="../img/APU.jpg" alt="">
+    
+    
+    <script>
+        let temporizador = document.getElementById("temporizador");
+        setTimeout(()=>{temporizador.innerHTML="Volveremos Prontos en 3"}, 1000)
+        setTimeout(()=>{temporizador.innerHTML="Volveremos Prontos en 2"}, 2000)
+        setTimeout(()=>{temporizador.innerHTML="Volveremos Prontos en 1"}, 3000)
+        setTimeout(()=>{document.location.href ="../index.html"}, 4000)
+    </script>
+</body>
+</html>

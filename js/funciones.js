@@ -26,7 +26,12 @@ function muestraSolicitadax(e) {
 }
 
 function muestraSolicitada(iditem){
-    
+
+    if (i>=5){
+        alert("maximo de muestras alcanzado");
+        return;
+    }
+
     let contador = 4 - i;
     contadorMuestras.innerHTML = `Cantidad máxima restante: ${contador} `;
 
@@ -45,15 +50,18 @@ function muestraSolicitada(iditem){
     }
     
 
-    if (i>=5){
-        alert("maximo de muestras alcanzado");
-    }
+    
 
             const result = portfolio.find((eleme) => eleme.id === iditem);
-            let info = `Producto: ${result.item}, Precio: ${result.precio}/kg + IVA`;
-            let guardarMuestras = localStorage.setItem(result.id , info);
-            tabla[i].innerHTML = info;
+            let info = result.item;
+            localStorage.setItem (result.id,info);
+            
+            let muestraTab = document.getElementById("tabla");
+            muestraTab.innerHTML += `<tr><td>${info}</td></tr>`;
+            /* muestraTab.append(muestraTab); */
+
             i = i + 1;
+
             return i;
             
 }
@@ -69,7 +77,10 @@ function funContinuarPedido(){
     }   
     document.location.href = "./html/MuestrasSolicitadas.html";
 
-/*     pedidoFinal.splice(0, pedidoFinal.length);
+/*     No borro hasta la version final este código por si hay elementos que puedo llegar a reutilizar
+
+
+    pedidoFinal.splice(0, pedidoFinal.length);
     sumatoria.splice(0,sumatoria.length);
     pedidoFinalconcat.splice(0, pedidoFinalconcat.length);
 

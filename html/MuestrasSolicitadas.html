@@ -9,41 +9,85 @@
 <body>
     
     <div id="ListadoMuestras">
-        <ul id="lista"></ul>
     </div>
+
+    <div>
+        <ul id="listado">
+        
+        </ul>
+    </div>
+
 
     <script>
 
         const muestras = [];
-        /* let muestras = localStorage.getItem("1"); */
+        /* const pesoMuestras = []; Lo dejo por si después hago una sumatoria*/
 
+        let a = -1;
         for (let i= 0; i< localStorage.length; i++){
             let clave = localStorage.key(i);
             let valor = localStorage.getItem(clave);
-
+            
+            muestras.push(valor);
+            
             const listaMuestras = document.getElementById('ListadoMuestras');
     
             listaMuestras.innerHTML = "<h2>Muestras Solicitadas: </h2>";
-
-
-            let li = document.createElement("li");
-
-            li.innerHTML = valor;
-
-            document.body.append(li); 
-
-            let btn = document.createElement("button");
-
-            btn.innerHTML += `<input type="number" id="${clave}" class="ctdadMuestra" placeholder="Cant">`;
-
-            document.body.append(btn); 
             
+            const listado = document.getElementById('listado');
+           
+
+            listado.innerHTML += `<li>${valor}</li>
+            <input type="number" id="${clave}" class="ctdadMuestra" placeholder="Cant">`;
+
+            
+
         }
             
-        
 
-   
-      
+            let finalizarPedido = document.createElement("buttom");
+
+            finalizarPedido.innerHTML += `<input type="button" id="btnFinPedido" value="Finalizar Pedido">`;
+
+            document.body.append(finalizarPedido);
+
+            
+            finalizarPedido.addEventListener("click", calculoFinal);
+
+            function calculoFinal(){
+                let cantPedido = document.getElementsByClassName("ctdadMuestra");
+               
+                for (const cantMuestra of cantPedido){
+                    let queMuestra = cantMuestra.id;
+
+                    if (cantMuestra.value <0 || cantMuestra.value>100){
+                        alert("seleccione una cantidad entre 1gr o 100gr");
+                        return;
+                    }
+                    if (cantMuestra.value){
+                        let cantidadFinal = cantMuestra.value;
+                        a = a + 2;
+
+                        /* pesoMuestras.push(cantMuestra.value); Ignorado por el momento*/
+                        
+                        muestras.splice(a,0,`${cantMuestra.value} gramos,`);
+                    }
+
+                    else{
+                        
+                        const resultadoMuestra = muestras.find((elemen) => elemen.id === queMuestra);
+                        alert(`Debe escribir una cantidad de muestra para ${JSON.stringify(resultadoMuestra.nombre)}`);
+                        return;
+                    }
+
+                    
+
+                }
+                const muestrasUnidas = muestras.join(" ");
+                alert("Su pedido de " + muestrasUnidas +" fue enviado correctamente");
+                document.location.href = "./gracias.html";
+            }
+
     </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ let tabla = document.getElementsByClassName("tabla");
 
 alert("solicite hasta 5 muestras de producto")
 
-tabla[0].innerHTML = "Por favor ingrese las muestras";
+
 
 const contenedorMuestras = document.getElementById("contenedorMuestras");
 const btnContinuarPedido = document.getElementById("continuarPedido");
