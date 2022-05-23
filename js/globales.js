@@ -2,7 +2,6 @@ let i=0
 const verificador = [];
 const sumatoria = [];
 const pedidoFinal = [];
-let pedidoFinalconcat = [];
 
 const portfolio = [
     {id: 1, item: "natamicina", precio: 170},

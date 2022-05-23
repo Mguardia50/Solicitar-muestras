@@ -27,12 +27,20 @@ function muestraSolicitadax(e) {
 
 function muestraSolicitada(iditem){
 
+   /* i>=5 && alert("maximo de muestras alcanzado");  es mentira lo del return implicito, el codigo continua */
+    
+    
     if (i>=5){
         alert("maximo de muestras alcanzado");
         return;
-    }
+    } 
+
+
 
     let contador = 4 - i;
+    contador<=0 && console.log("No se puede pedir màs de 5 muestras");
+
+
     contadorMuestras.innerHTML = `Cantidad máxima restante: ${contador} `;
 
     verificador.push(iditem);
@@ -45,24 +53,24 @@ function muestraSolicitada(iditem){
                 verificador.splice(verificado,1);
                 alert("Ya se pidio dicha muestra, por favor seleccione otra");
                 return;
-            }
-        
+            } 
+
     }
     
 
     
 
             const result = portfolio.find((eleme) => eleme.id === iditem);
-            let info = result.item;
-            localStorage.setItem (result.id,info);
+            let info = JSON.stringify({id: result.id, item: result.item});
+            localStorage.setItem ("ProgramaParaPedirMuestrasByMarianoGuardia" + result.id,info);
             
             let muestraTab = document.getElementById("tabla");
-            muestraTab.innerHTML += `<tr><td>${info}</td></tr>`;
+            muestraTab.innerHTML += `<tr><td>${result.item}</td></tr>`;
             /* muestraTab.append(muestraTab); */
 
             i = i + 1;
 
-            return i;
+            return i; /* era necesario este return? */
             
 }
 
@@ -71,47 +79,8 @@ function muestraSolicitada(iditem){
 
 function funContinuarPedido(){
 
-    if (i<=0){
-        alert("seleccione al menos una muestra");
-       return
-    }   
-    document.location.href = "./html/MuestrasSolicitadas.html";
 
-/*     No borro hasta la version final este código por si hay elementos que puedo llegar a reutilizar
-
-
-    pedidoFinal.splice(0, pedidoFinal.length);
-    sumatoria.splice(0,sumatoria.length);
-    pedidoFinalconcat.splice(0, pedidoFinalconcat.length);
-
-    
-        
-    for (cadaUno in verificador){
-     
-        
-        const resultado = portfolio.find((elemen) => elemen.id === verificador[cadaUno]);
-
-        
-        let cantidad = parseInt(prompt("Ingrese la cantidad de muestra de " +resultado.item+ " solicitada en gramos"));
-        
-        pedidoFinal.push(resultado.item);
-
-        while (isNaN(cantidad) || cantidad<0 || cantidad >100){
-            alert("Ingrese sólo numeros entre 1 y 100 gramos");
-            cantidad = parseInt(prompt("Ingrese la cantidad de muestra solicitada en gramos"));
-        
-        }
-     
-        
-        sumatoria.push(cantidad);
-
-        pedidoFinalconcat = pedidoFinal.concat(sumatoria);
+     i>0 ? document.location.href = "./html/MuestrasSolicitadas.html" : alert("seleccione al menos una muestra");
 
     }
-
-
-    alert("las muestras con sus respectivos gramajes son de: " +pedidoFinalconcat);
-    const totalFinal =sumatoria.reduce((acumulador, elementox) => acumulador + elementox, 0)
-    alert("usted ha pedido un total de " + totalFinal +"g de muestras, los cuales será  entregados a la brevedad. Muchas gracias");
- */}
 

@@ -1,3 +1,8 @@
+Programa para pedir muestras V0.21:
+-Para evitar otros localstore con la misma clave, se procedio a guardar de otra forma los objetos y usar el metodo includes.
+-Se arreglo un error que mostraba al no haber muestras seleccionadas.
+-Remplazamos la funcion continuar pedido por una sola linea de operacion ternaria
+
 Programa para pedir muestras V0.2:
 -Se ordeno el código en distintos archivos JS
 -Ahora se agregan los items a través de JS y no del HTML
