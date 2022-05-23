@@ -31,7 +31,10 @@ function muestraSolicitada(iditem){
     
     
     if (i>=5){
-        alert("maximo de muestras alcanzado");
+        Swal.fire({
+            icon: 'error',
+            text: 'maximo de muestras alcanzado',
+          })
         return;
     } 
 
@@ -51,7 +54,11 @@ function muestraSolicitada(iditem){
         
             if (verificador[verificado]==verificador[verificado-1]){
                 verificador.splice(verificado,1);
-                alert("Ya se pidio dicha muestra, por favor seleccione otra");
+                Swal.fire({
+                    icon: 'error',
+                    text: "Ya se pidio dicha muestra, por favor seleccione otra",
+                  })
+              
                 return;
             } 
 
@@ -80,7 +87,10 @@ function muestraSolicitada(iditem){
 function funContinuarPedido(){
 
 
-     i>0 ? document.location.href = "./html/MuestrasSolicitadas.html" : alert("seleccione al menos una muestra");
+     i>0 ? document.location.href = "./html/MuestrasSolicitadas.html" : Swal.fire({
+        icon: 'error',
+        text: "Seleccione al menos una muestra",
+      });
 
     }
 

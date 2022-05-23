@@ -1,3 +1,6 @@
+Programa para pedir muestras V0.30:
+-Se incorporaron librerias para sacar las alertas
+
 Programa para pedir muestras V0.21:
 -Para evitar otros localstore con la misma clave, se procedio a guardar de otra forma los objetos y usar el metodo includes.
 -Se arreglo un error que mostraba al no haber muestras seleccionadas.

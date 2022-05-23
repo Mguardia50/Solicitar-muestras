@@ -57,7 +57,14 @@
                     const resultadoMuestra = muestrasObj.find((elemen) => elemen.id == queMuestra);
  
                     if (cantMuestra.value <0 || cantMuestra.value>100){
-                        alert(`Para ${resultadoMuestra.item} debe seleccionar una cantidad entre 1gr o 100gr`);
+                        Toastify({
+                            text: `Para ${resultadoMuestra.item} debe seleccionar una cantidad entre 1gr o 100gr`,
+                            duration: 4000,
+                            style: {
+                                color: "white",  
+                                background: "linear-gradient(to right, #211522, #613659, #C197D2)",
+                              }
+                        }).showToast();
                         return; /* intenté con || pero no me hace el return y sigue las funciones... */
                     }
                      if (cantMuestra.value){
@@ -81,7 +88,14 @@
                         
                         console.log(cantMuestra.value || `NO HAY MUESTRAS EN ${resultadoMuestra.item}`);
                         /* Arriba: Linea innecesaria, sólo para presentar el desafio, será borrada más adelante...MENTIRA LO DEL RETURN INPLICITO, EL CODIGO CONTINUA COMO SI NADA */
-                        alert(`Debe escribir una cantidad de muestra para ${resultadoMuestra.item}`);
+                        Toastify({
+                            text: ` Debe seleccionar una muestra de ${resultadoMuestra.item}`,
+                            duration: 4000,
+                            style: {
+                              color: "white",  
+                              background: "linear-gradient(to right, #211522, #613659, #C197D2)",
+                            },
+                          }).showToast();
                         return;
                     } 
 
@@ -89,7 +103,34 @@
                     
                 }
 
+                let timerInterval
+
+
+                Swal.fire({
+                icon: 'success',
+                title: "Su pedido de" +pedidoFinalTotal+ " fue enviado correctamente",
+                html: 'Redireccionando en <b></b>',
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                    
+                willClose: () => {
+                    
+                    clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
                
-                alert("su pedido de" +pedidoFinalTotal+ " fue enviado correctamente");
-                document.location.href = "./gracias.html";
+                    document.location.href = "./gracias.html";
+                
+                })
+            
+            
+                
             }

@@ -14,7 +14,14 @@ const portfolio = [
 
 let tabla = document.getElementsByClassName("tabla");
 
-alert("solicite hasta 5 muestras de producto")
+Toastify({
+    text: "Solicite hasta 5 muestras",
+    duration: 5000,
+    style: {
+        color: "white",  
+        background: "linear-gradient(to right, #211522, #613659, #C197D2)",
+      }
+}).showToast();
 
 
 
