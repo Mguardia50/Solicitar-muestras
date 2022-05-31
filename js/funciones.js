@@ -3,15 +3,29 @@ function mostrarMuestras () {
   
     window.localStorage.clear();
     
-    portfolio.forEach(producto => {
-        contenedorMuestras.innerHTML += `
-            <div class="boxMuestra">
-                <h2>${producto.item}</h2>
-                <p>Precio u$${producto.precio}/Kg + IVA</p>
-                <button id="${producto.id}" class="btnMuestras">Solicitar Muestra</button>
-            </div>
-        `
-    });
+    const listaPost = async () => {
+
+        const resp = await fetch('./json/data.json');
+        const portfolioFetch = await resp.json();
+    
+    
+        portfolioFetch.forEach(producto => {
+            portfolio.push(producto);
+            contenedorMuestras.innerHTML += `
+                <div class="boxMuestra">
+                    <h2>${producto.item}</h2>
+                    <p>Precio u$${producto.precio}/Kg + IVA</p>
+                    <button id="${producto.id}" class="btnMuestras">Solicitar Muestra</button>
+                </div>
+            `
+            
+        });
+         
+    };
+   
+    listaPost();
+
+      
 }
 
 
@@ -27,8 +41,7 @@ function muestraSolicitadax(e) {
 
 function muestraSolicitada(iditem){
 
-   /* i>=5 && alert("maximo de muestras alcanzado");  es mentira lo del return implicito, el codigo continua */
-    
+
     
     if (i>=5){
         Swal.fire({
