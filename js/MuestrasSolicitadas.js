@@ -61,6 +61,7 @@
                             text: `Para ${resultadoMuestra.item} debe seleccionar una cantidad entre 1gr o 100gr`,
                             duration: 4000,
                             style: {
+                                
                                 color: "white",  
                                 background: "linear-gradient(to right, #211522, #613659, #C197D2)",
                               }
